@@ -73,23 +73,41 @@ Presets are plain JSON. See [`examples/example_preset.json`](examples/example_pr
 
 Coordinates are absolute pixels on the **primary screen**, so a preset recorded on a different resolution may click the wrong spots. Check the list after loading one.
 
-## Build a Windows executable
+## Build a standalone Windows executable
 
-```bash
+This produces a **single `SmartAutoClicker.exe`** that doesn't need Python, any libraries, or any other folder, so you can put it anywhere.
+
+**Command Prompt / double-click:**
+
+```bat
 build_exe.bat
 ```
 
-This installs PyInstaller and builds `dist\SmartAutoClicker\SmartAutoClicker.exe`. The equivalent manual command is:
+**Git Bash:**
 
 ```bash
-pyinstaller --noconsole --onedir --name SmartAutoClicker ^
-  --hidden-import pystray._win32 ^
-  --hidden-import pynput.keyboard._win32 ^
-  --hidden-import pynput.mouse._win32 ^
+./build_exe.sh
+```
+
+Either way, the result is `dist/SmartAutoClicker.exe`. The equivalent manual command is:
+
+```bash
+python -m pip install -r requirements.txt pyinstaller
+python -m PyInstaller --clean --noconfirm --noconsole --onefile --name SmartAutoClicker \
+  --hidden-import pystray._win32 \
+  --hidden-import pynput.keyboard._win32 \
+  --hidden-import pynput.mouse._win32 \
   smart_auto_clicker.py
 ```
 
-`--onedir` is recommended over `--onefile`: it starts faster and is flagged by antivirus software less often.
+(In Command Prompt, use `^` instead of `\` at the end of each line.)
+
+Notes:
+
+- **`pyinstaller: command not found`:** pip's scripts folder usually isn't on your PATH on Windows. Run it as `python -m PyInstaller ...` as shown above (or `py -m PyInstaller ...`), which always works.
+- **First launch is slower:** a one-file build unpacks itself into a temporary folder every time it starts, so expect a few seconds of delay.
+- **Antivirus:** one-file executables are flagged more often than folder builds. If that's a problem, replace `--onefile` with `--onedir`. That produces a folder (`dist/SmartAutoClicker/`) that must stay together.
+- **Settings and logs:** the app writes only to `%LOCALAPPDATA%\SmartAutoClicker\log.txt`, so the .exe can live anywhere. Presets are saved wherever you choose in the file dialog.
 
 ## Platform support
 
