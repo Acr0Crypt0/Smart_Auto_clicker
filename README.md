@@ -36,7 +36,7 @@ cd smart-auto-clicker
 pip install -r requirements.txt
 python smart_auto_clicker.py
 ```
-
+ 
 ## Usage
 
 1. **Add steps.** Either click **Record Pos & Add (3s)** and move the mouse to the target, or type X/Y, a delay and a unit, then click **Add Manual Step**. The delay on a step is the wait *after* that click.
