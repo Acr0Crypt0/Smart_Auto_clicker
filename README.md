@@ -6,9 +6,9 @@ A multi-step auto clicker for desktop that clicks a **sequence of screen positio
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Platform](https://img.shields.io/badge/platform-Windows-lightgrey)
 
-<!-- Add a screenshot: save it as docs/screenshot.png and uncomment the line below.
+
 ![Smart Auto Clicker screenshot](docs/screenshot.png)
--->
+
 
 ## Features
 
