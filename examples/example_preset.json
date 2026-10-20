@@ -1,0 +1,10 @@
+{
+    "steps": [
+        { "x": 400, "y": 300, "delay": 1.0 },
+        { "x": 600, "y": 400, "delay": 0.5 },
+        { "x": 800, "y": 500, "delay": 30.0 }
+    ],
+    "loop_enabled": true,
+    "loop_delay": "5",
+    "loop_unit": "sec"
+}
